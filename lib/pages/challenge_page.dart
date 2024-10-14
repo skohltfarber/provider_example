@@ -10,39 +10,43 @@ class ChallengePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Challenge Page'),
+        title: const Text('Challenge Page'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Text(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
               "${context.watch<CounterProvider>().value}",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
               ),
             ),
-          ),
-          Row(
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  context.read<CounterProvider>().incrementCounter();
-                },
-                child: const Text('+'),
+            const SizedBox(height: 10.0),
+            Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<CounterProvider>().incrementCounter();
+                    },
+                    child: const Text('+'),
+                  ),
+                  const SizedBox(height: 10.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<CounterProvider>().decrementCounter();
+                    },
+                    child: const Text('-'),
+                  ),
+                ],
               ),
-              const SizedBox(height: 10.0),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<CounterProvider>().decrementCounter();
-                },
-                child: const Text('-'),
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
