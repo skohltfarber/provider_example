@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider_example/pages/home_page.dart';
 import 'package:provider_example/pages/setting_page.dart';
+import 'package:provider_example/pages/challenge_page.dart';
 
 // Skeleton with BottomNavigationBar
 class Skeleton extends StatefulWidget {
+  const Skeleton({super.key});
+
   @override
   _SkeletonState createState() => _SkeletonState();
 }
@@ -13,8 +16,9 @@ class _SkeletonState extends State<Skeleton> {
 
   // List of screens for BottomNavigationBar
   final List<Widget> _screens = [
-    HomePage(),
-    SettingsPage(),
+    const HomePage(),
+    const SettingsPage(),
+    const ChallengePage(),
   ];
 
   // Handle bottom navigation bar item tap
@@ -32,7 +36,7 @@ class _SkeletonState extends State<Skeleton> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onTabTapped,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -40,6 +44,10 @@ class _SkeletonState extends State<Skeleton> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.question_mark),
+            label: 'Challenge',
           ),
         ],
       ),
